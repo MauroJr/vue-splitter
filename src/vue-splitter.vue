@@ -1,10 +1,10 @@
 <template>
   <div :style="{ cursor, userSelect, flexDirection }" class="vue-splitter" @mouseup="onUp" @mousemove="onMouseMove" @touchmove="onMove" @touchend="onUp">
-    <div :style="leftPaneStyle" class="left-pane splitter-pane">
+    <div :style="leftPaneStyle" class="left-pane splitter-pane" v-if="this.$slots['left-pane']">
       <slot name="left-pane"></slot>
     </div>
-    <div class="splitter" :class="{active}" :style ="splitterStyle" @mousedown="onDown" @click="onClick" @touchstart.prevent="onDown"></div>
-    <div :style="rightPaneStyle" class="right-pane splitter-pane">
+    <div class="splitter" :class="{active}" :style ="splitterStyle" @mousedown="onDown" @click="onClick" @touchstart.prevent="onDown" v-if="this.$slots['left-pane'] && this.$slots['right-pane']"></div>
+    <div :style="rightPaneStyle" class="right-pane splitter-pane" v-if="this.$slots['right-pane']">
       <slot name="right-pane"></slot>
     </div>
   </div>
