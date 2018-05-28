@@ -143,6 +143,10 @@ var _default = {
       };
     },
     leftPaneStyle: function leftPaneStyle() {
+      if (!this.$slots['left-pane'] || !this.$slots['right-pane']) return {
+        height: '100%',
+        width: '100%'
+      };
       return this.horizontal ? {
         height: this.percent + '%'
       } : {
@@ -150,6 +154,10 @@ var _default = {
       };
     },
     rightPaneStyle: function rightPaneStyle() {
+      if (!this.$slots['left-pane'] || !this.$slots['right-pane']) return {
+        height: '100%',
+        width: '100%'
+      };
       return this.horizontal ? {
         height: 100 - this.percent + '%'
       } : {
@@ -455,7 +463,7 @@ exports = module.exports = __webpack_require__(4)();
 
 
 // module
-exports.push([module.i, "\n.vue-splitter {\n  height: inherit;\n  display: -ms-flexbox;\n  display: flex;\n}\n.vue-splitter .splitter-pane {\n    height: inherit;\n    overflow-y: auto;\n}\n.vue-splitter .splitter {\n    background-color: #9e9e9e;\n}\n", ""]);
+exports.push([module.i, "\n.vue-splitter {\n  height: inherit;\n  display: flex;\n}\n.vue-splitter .splitter-pane {\n    height: inherit;\n    overflow-y: auto;\n}\n.vue-splitter .splitter {\n    background-color: #9e9e9e;\n}\n", ""]);
 
 // exports
 
@@ -478,7 +486,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/gwen/sources/dashboard-system/node_modules/@rmp135/vue-splitter/src/vue-splitter.vue"
+Component.options.__file = "/home/gwen/sources/vue-splitter/src/vue-splitter.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] vue-splitter.vue: functional components are not supported with templates, they should use render functions.")}
 

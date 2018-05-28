@@ -44,8 +44,18 @@
     computed: {
       flexDirection () { return this.horizontal ? 'column' : 'row' },
       splitterStyle () { return this.horizontal ? { height: '5px', cursor: 'ns-resize' } : { width: '5px', cursor: 'ew-resize' } },
-      leftPaneStyle () { return this.horizontal ? { height: this.percent + '%' } : { width: this.percent + '%' } },
-      rightPaneStyle () { return this.horizontal ? { height: 100-this.percent + '%' } : { width: 100-this.percent + '%' } },
+      leftPaneStyle () {
+        if(!this.$slots['left-pane'] || !this.$slots['right-pane'])
+          return {height: '100%', width: '100%'};
+
+        return this.horizontal ? { height: this.percent + '%' } : { width: this.percent + '%' }
+      },
+      rightPaneStyle () {
+        if(!this.$slots['left-pane'] || !this.$slots['right-pane'])
+          return {height: '100%', width: '100%'};
+
+        return this.horizontal ? { height: 100-this.percent + '%' } : { width: 100-this.percent + '%' }
+      },
       userSelect () { return this.active ? 'none' : '' },
       cursor () { return this.active ? this.horizontal ? 'ns-resize' : 'ew-resize' : '' },
     },
